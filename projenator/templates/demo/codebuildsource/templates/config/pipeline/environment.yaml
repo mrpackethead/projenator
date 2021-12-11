@@ -1,2 +1,0 @@
-Privileged: True    # if you are bundling lambdas or building docker images, the build stage needs to be running in privilidged mode. 
-ComputeType: LARGE  # SMALL (3GB/2vcpu)| MEDIUM (7GB/4cpu) | LARGE (16GB/8Vcpu) | X2_LARGE (145GB/72BVcpu)

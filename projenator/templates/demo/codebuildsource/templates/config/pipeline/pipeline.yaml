@@ -1,8 +1,0 @@
-Account: <<account>>                   # this is the account that will run the pipeline.  Needs to be quoted and include leading zeros.
-Region: <<region>>                    # region
-LocalLookupProfile: <<locallookupprofile>>  # this is a local profile to use if you are running locally. should be pointing to candi account
-LookupRole: <<lookuprole>>
-SelfMutate: True                          # True | False
-VerboseLogs: True
-DisableCommitContext: False               # This must be set to True to disable the committing of context back to 
-#EnableSynthValidation: True

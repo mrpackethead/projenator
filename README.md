@@ -1,58 +1,52 @@
 
-# Welcome to your CDK Python project!
+# The Projenator:  
+*I'll be back!*
 
-This is a blank project for Python development with CDK.
+## Description
+This is a CDKv2 project that takes the grind out of setting up new cdk projects/implementations by using automation
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+When deployed this project will create for each 'template' a set of resources;
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+- a ssm automation document which 'kicks' off the process of creating a new 'instance' of your template
+- a lambda which acts as 'glue' between the ssm automation document and a
+- codebuild project which 
+	- creates a cdk project based on the parameters you pass into the ssm automation document
+	- synths the cdk project
+	- deploys the cdk project
 
-To manually create a virtualenv on MacOS and Linux:
+## Prerequisites:
+- AWS account
+- cdkv2 and aws cli tools installed. 
 
+## Assumptions:
+- A resonable level of understanding of cdk.
+
+## UseCases:
+
+### python
 ```
-$ python3 -m venv .venv
-```
-
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
-
-```
-$ source .venv/bin/activate
-```
-
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
-
-```
-$ pip install -r requirements.txt
+cd python
+cdk synth
+cdk deploy 
 ```
 
-At this point you can now synthesize the CloudFormation template for this code.
+Note: the demo template is environment agnostic. If you need to deploy this to a specific account, then use a cdk deploy --profile <yourprofile>
 
-```
-$ cdk synth
-```
+### typescript
+<TODO>
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
 
-## Useful commands
+## Extending the Templates:
+This stack will deploy a set of automation resources for each template that you create.   Use the demo templates as a guide
+you need to edit/modify the ssmdocument, potentially the lambda, and also the templates them selves.   The magic is in the .projenrc.js
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+You also can modify the codebuildproject to change how it deploys the project.  You may want it *NOT* to deploy a cdk project at all, but just create a repo, and place the files in there.
+The choice is entirely up to you.   (PR's for example templates welcome)
 
-Enjoy!
+
+
+## References: 
+
+[projen](https://github.com/projen/projen)
+[Amazon Cloud Development Kit](https://aws.amazon.com/cdk/)
+
