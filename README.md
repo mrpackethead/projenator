@@ -47,14 +47,12 @@ The choice is entirely up to you.   (PR's for example templates welcome)
 
 ## References: 
 
-(1) [projen](https://github.com/projen/projen)
-
-(2) [Amazon Cloud Development Kit](https://aws.amazon.com/cdk/)
-
-(3) [The CDK Book](https://thecdkbook.com/)
+(1) [projen](https://github.com/projen/projen)\
+(2) [Amazon Cloud Development Kit](https://aws.amazon.com/cdk/)\
+(3) [The CDK Book](https://thecdkbook.com/)\
 
 ## Acknowldgements:
-[Matthew Boing](https://twitter.com/mattbonig)
-[Matt Coulter](https://twitter.com/nideveloper)
+[Matthew Boing](https://twitter.com/mattbonig)\
+[Matt Coulter](https://twitter.com/nideveloper)\
 Elad Ben-Israel
 
