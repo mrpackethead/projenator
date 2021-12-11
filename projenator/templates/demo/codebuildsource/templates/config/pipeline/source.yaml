@@ -1,0 +1,8 @@
+AzureDevops: 
+  PATSecretArn: arn:aws:secretsmanager:ap-southeast-2:283923818425:secret:AzureDevops-gD6z8d #secret were PAT is stored. 
+  Staging: True
+  RepoName: <<name>>          
+  AzureOrg: ContactEnergy-DevOps
+  AzureAPIVer: 'api-version=6.0'
+  AzureProjectName: 'Cloud and infra'  #This shoudl be used for projects, the ConstructionCandi for constructs.
+  Action: New   #  New | Import Exisiting, must specify #RepoName

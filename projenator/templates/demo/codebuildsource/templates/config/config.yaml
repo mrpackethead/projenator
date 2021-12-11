@@ -1,0 +1,15 @@
+TemplateVersion: '210609.0'
+
+Project:
+  ProjectName: <<name>>                      
+
+Pipeline: !include pipeline/pipeline.yaml
+Source: !include pipeline/source.yaml
+Synth: !include pipeline/synth.yaml
+Environment: !include pipeline/environment.yaml
+
+Stages:  
+  
+  Default:
+    Stacks:      
+    - !include stacks/default.yaml

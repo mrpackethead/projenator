@@ -1,0 +1,27 @@
+description: |-
+  *The Projenator*  
+  ---
+  # Projenator Demostration - Create Super Simple Stack
+schemaVersion: '0.3'
+parameters:
+  Name:
+    type: String
+    description: project Name
+  Account:
+    type: String
+    default: '123456789000'
+    description: Account to deploy stack to
+  Region:
+    type: String
+    default: ap-southeast-2
+    description: Region to deploy stack to
+  CdkQualifier:
+    type: String
+    default: abcdef
+mainSteps:
+  - name: sendtolambda
+    action: 'aws:invokeLambdaFunction'
+    inputs:
+      Payload: '{"env_var":{"NAME":"{{Name}}", "ACCOUNT":"{{Account}}", "REGION":"{{Region}}", "CDKQUALIFIER":"{{CdkQualifier}}"}, "template":"demo"}'
+      InvocationType: RequestResponse
+      FunctionName: demo-startprojenatorcodebuild # Edit this
