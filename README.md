@@ -49,7 +49,7 @@ The choice is entirely up to you.   (PR's for example templates welcome)
 
 (1) [projen](https://github.com/projen/projen)\
 (2) [Amazon Cloud Development Kit](https://aws.amazon.com/cdk/)\
-(3) [The CDK Book](https://thecdkbook.com/)\
+(3) [The CDK Book](https://thecdkbook.com/)
 
 ## Acknowldgements:
 [Matthew Boing](https://twitter.com/mattbonig)\
