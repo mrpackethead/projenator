@@ -33,7 +33,9 @@ cdk deploy
 Note: the demo template is environment agnostic. If you need to deploy this to a specific account, then use a cdk deploy --profile <yourprofile>
 
 ### typescript
-<TODO>
+<TODO> 
+
+Typescripters, its coming. Every so often the Pythonists do something first.
 
 
 ## Extending the Templates:
