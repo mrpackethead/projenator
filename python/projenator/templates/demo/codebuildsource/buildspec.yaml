@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      build:
+    commands:
+      - echo building project
+      - npx projen
+      - cd projen.out
+      - pip install -r requirements.txt
+      - npx cdk deploy  
+  post_build:
+    commands:
+      - echo project built.
+

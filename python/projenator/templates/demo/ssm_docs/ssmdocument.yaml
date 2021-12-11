@@ -1,0 +1,19 @@
+description: |-
+  *The Projenator*  
+  ---
+  # Projenator Demostration - Create Super Simple Stack
+schemaVersion: '0.3'
+parameters:
+  Name:
+    type: String
+    description: project Name
+  CdkQualifier:
+    type: String
+    default: hnb659fds
+mainSteps:
+  - name: sendtolambda
+    action: 'aws:invokeLambdaFunction'
+    inputs:
+      Payload: '{"env_var":{"NAME":"{{Name}}", "CDKQUALIFIER":"{{CdkQualifier}}"}, "template":"demo"}'
+      InvocationType: RequestResponse
+      FunctionName: demo-startprojenatorcodebuild # Edit this
