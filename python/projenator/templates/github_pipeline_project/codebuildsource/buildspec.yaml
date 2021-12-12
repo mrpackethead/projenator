@@ -1,0 +1,38 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      build:
+    commands:
+      - echo building project
+      - npx projen
+      - cd projen.out
+      - pip install -r requirements.txt
+      - npx cdk deploy  
+  post_build:
+    commands:
+      - echo The project built. Now push to the repo
+       # https://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html
+      - export FULLNAME=$(aws cloudformation describe-stacks --stack-name $STACKNAME | jq '.Stacks.[0].Outputs.FullName')     
+      - export GITSecret=$(aws cloudformation describe-stacks --stack-name $STACKNAME | jq '.Stacks.[0].Outputs.GitSecret')
+      - export TOKEN=$(aws secretsmanager get-secret-value --secret-id $GITSecret | jq '.SecretString.Token')
+      - export USER=$(aws secretsmanager get-secret-value --secret-id $GITSecret | jq '.SecretString.User')      
+      - export URL="https://$USER:$TOKEN>@github.com/$FULLNAME>.git"
+      
+      
+      - git remote add origin $URL 
+      - git fetch
+      - git checkout master
+      - git add .
+      - git commit -m "Projenators initial push. I'll never be back now, your on your own"
+      - git push
+
+
+     
+
+

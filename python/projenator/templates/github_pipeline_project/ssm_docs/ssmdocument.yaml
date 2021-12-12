@@ -1,0 +1,42 @@
+description: |-
+  *The Projenator*  
+  ---
+  # Projenator Demostration - Create Super Simple Stack
+schemaVersion: '0.3'
+parameters:
+  Name:
+    type: String
+    description: Project Name
+  Account:
+    type: String
+    description: Account to deploy stack to
+  Region:
+    type: String
+    description: Region to deploy stack to
+  RepoName:
+    type: String
+    description: Name of GitHub Repo to Create    
+  GitHubToken:
+    type:
+    decription: SecretID of GitHub Token
+  CdkQualifier:
+    type: String
+    default: hnb659fds
+    description: Modify this if you are not using Default CDK qualifier
+
+
+mainSteps:
+  - name: sendtolambda
+    action: 'aws:invokeLambdaFunction'
+    inputs:
+      Payload: '{"env_var":
+      {"NAME":"{{Name}}", "ACCOUNT":"{{Account}}", "REGION":"{{Region}}", "REPONAME":"{{RepoName}}", "GITHUBTOKEN":"{{GitHubToken}}", "CDKQUALIFIER":"{{CdkQualifier}}"}, "template":"github_pipeline_project"}'
+      InvocationType: RequestResponse
+      FunctionName: github_pipeline_project-startprojenatorcodebuild # Edit this
+
+<<projectname>>"
+account = '<<account>>',
+region = '<<region>>'
+"<<cdkqualifier>>"
+"repo" : "<<repo>>",                                    
+"githubtoken": "<<githubtoken>>"

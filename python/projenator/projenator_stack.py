@@ -58,7 +58,18 @@ class ProjenatorStack(Stack):
                     bucket=asset.bucket,
                     path = asset.s3_object_key,
                 ),
-                project_name = f'{template}-projencdkbuilder'
+                project_name = f'{template}-projencdkbuilder',
+                environment = codebuild.BuildEnvironment(
+                    build_image= codebuild.LinuxBuildImage.STANDARD_5_0
+                )
+            )
+
+            cbproject.add_to_role_policy(
+                statement = iam.PolicyStatement(
+                    actions = ['secretsmanager:GetSecretValue'],
+                    resources= ['arn:aws:secretsmanager:*:*:secret:*'], #TODO: This is problematic. 
+                    effect = iam.Effect.ALLOW 
+                )
             )
 
             asset.grant_read(cbproject.role)
